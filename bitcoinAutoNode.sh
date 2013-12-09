@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "########### The server will reboot when the script is complete"
 echo "########### Changing to home dir"
 cd ~
 echo "########### Change your root password!"
@@ -6,8 +7,7 @@ passwd
 echo "########### Firewall rules; allow 22,8333"
 ufw allow 22/tcp
 ufw allow 8333/tcp
-echo "########### Press 'y' to enable to firewall. After this step, you're done! Just wait for the machine to reboot"
-ufw enable
+ufw --force enable
 echo "########### Updating Ubuntu"
 apt-get update -y
 apt-get upgrade -y
