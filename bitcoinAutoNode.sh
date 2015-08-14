@@ -2,12 +2,6 @@
 echo "########### The server will reboot when the script is complete"
 echo "########### Changing to home dir"
 cd ~
-echo "########### Change your root password!"
-passwd
-echo "########### Firewall rules; allow 22,8333"
-ufw allow 22/tcp
-ufw allow 8333/tcp
-ufw --force enable
 echo "########### Updating Ubuntu"
 apt-get update -y
 apt-get upgrade -y
@@ -46,8 +40,13 @@ echo "rpcpassword=$randPass" >> $config
 echo "prune=10000" >> $config # safe enough for now
 echo "########### Setting up autostart (cron)"
 crontab -l > tempcron
-echo "@reboot bitcoind -daemon" >> tempcron
-echo "0 3 * * * reboot" >> tempcron
+echo "0 3 * * * reboot" >> tempcron  # reboot at 3am to keep things working okay
 crontab tempcron
 rm tempcron
+
+# only way I've been able to get it reliably to start on boot
+# (didn't want to use a service with systemd so it could be used with older ubuntu versions, but systemd is preferred)
+sed -i '2a\
+sudo /usr/local/bin/bitcoind' /etc/rc.local
+
 reboot
