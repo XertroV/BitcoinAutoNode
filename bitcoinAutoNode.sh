@@ -23,7 +23,7 @@ mkdir -p ~/src && cd ~/src
 git clone https://github.com/bitcoinxt/bitcoinxt.git
 cd bitcoinxt
 ./autogen.sh
-./configure --without-gui --without-upnp
+./configure --without-gui --without-upnp --disable-tests
 make
 make install
 echo "########### Creating config"
