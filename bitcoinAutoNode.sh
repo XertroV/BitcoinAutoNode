@@ -17,7 +17,7 @@ echo "########### Adding ppa:bitcoin/bitcoin and installing bitcoind"
 add-apt-repository -y ppa:bitcoin/bitcoin
 apt-get update -y
 mkdir ~/.bitcoin/
-apt-get install db4.8
+apt-get -y install db4.8
 echo "########### Cloning XT and Compiling"
 mkdir -p ~/src && cd ~/src
 git clone https://github.com/bitcoinxt/bitcoinxt.git
