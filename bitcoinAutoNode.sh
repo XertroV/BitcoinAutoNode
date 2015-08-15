@@ -18,7 +18,6 @@ echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 echo "########### Adding ppa:bitcoin/bitcoin and installing db4.8"
 add-apt-repository -y ppa:bitcoin/bitcoin
 apt-get update -y
-mkdir ~/.bitcoin/
 apt-get -y install db4.8
 
 echo "########### Cloning XT and Compiling"
@@ -30,10 +29,14 @@ cd bitcoinxt
 make
 make install
 
+echo "########### Create Bitcoin User"
+useradd -m bitcoin
+
 echo "########### Creating config"
-cd ~/
+cd ~bitcoin
+sudo -u bitcoin mkdir .bitcoin
 config=".bitcoin/bitcoin.conf"
-touch $config
+sudo -u bitcoin touch $config
 echo "server=1" > $config
 echo "daemon=1" >> $config
 echo "connections=40" >> $config
@@ -54,6 +57,6 @@ rm tempcron
 # only way I've been able to get it reliably to start on boot
 # (didn't want to use a service with systemd so it could be used with older ubuntu versions, but systemd is preferred)
 sed -i '2a\
-sudo /usr/local/bin/bitcoind' /etc/rc.local
+sudo -u bitcoin /usr/local/bin/bitcoind' /etc/rc.local
 
 reboot
