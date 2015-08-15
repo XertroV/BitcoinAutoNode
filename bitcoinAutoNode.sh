@@ -32,6 +32,7 @@ if [ -z $FIRSTNAME ]; then
   EXTRA=""
 else
   EXTRA=" $FIRSTNAME's node"
+fi
 sed -i "s/return ss.str();/return ss.str() + \"[B.A.N.] $EXTRA\";/" src/clientversion.cpp
 
 ./autogen.sh
