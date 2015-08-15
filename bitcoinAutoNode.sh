@@ -24,6 +24,10 @@ echo "########### Cloning XT and Compiling"
 mkdir -p ~/src && cd ~/src
 git clone https://github.com/bitcoinxt/bitcoinxt.git
 cd bitcoinxt
+
+# Add a market to track how much BitcoinAutoNode is used:
+sed -i "s/CLIENT_NAME(\"Bitcoin XT\")/CLIENT_NAME(\"Bitcoin XT (B.A.N.)\")/;" src/clientversion.cpp
+
 ./autogen.sh
 ./configure --without-gui --without-upnp --disable-tests
 make
