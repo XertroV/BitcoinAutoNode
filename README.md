@@ -10,9 +10,11 @@ It has been tested on Ubuntu Server 14.04 and 15.04. It is intended for use only
 One Liner
 ---------
 
-    wget https://raw.github.com/XertroV/BitcoinAutoNode/master/bitcoinAutoNode.sh ; sudo bash bitcoinAutoNode.sh
+    wget https://raw.github.com/XertroV/BitcoinAutoNode/master/bitcoinAutoNode.sh ; screen -dmS bitcoinInstaller sudo bash bitcoinAutoNode.sh
 
 You should really check out the code before running that though.
+
+The installer will be downloaded and then run in a `screen`. You can watch the installer with `screen -r bitcoinInstaller`. Otherwise, you are free to disconnect and never touch that VPS again, happy and secure in the knowledge your node will keep chugging away, rebooting occasionally, and sort of just take care of itself.
 
 Notes
 -----
