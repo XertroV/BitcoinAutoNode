@@ -14,13 +14,13 @@ One Liner
 
 You should really check out the code before running that though.
 
-screen -dmS bitcoinInstaller
+### Super Lazy Method
 
 If you want to run one command then disconnect (nearly) straight away, use this:
 
     wget https://raw.github.com/XertroV/BitcoinAutoNode/master/stub.sh ; sudo bash stub.sh ; exit
 
-It should drop the connection once it's started.
+It should drop the connection once it's started. You can view the setup with `screen -r bitcoinInstaller` and detach (when viewing) with `Ctrl+a d`.
 
 
 Notes
