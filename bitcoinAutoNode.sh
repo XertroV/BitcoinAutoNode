@@ -31,9 +31,9 @@ cd bitcoinxt
 if [ -z $FIRSTNAME ]; then
   EXTRA=""
 else
-  EXTRA=" $FIRSTNAME's node"
+  EXTRA=" $FIRSTNAME's node"  # keep first space
 fi
-sed -i "s/return ss.str();/return ss.str() + \"[B.A.N.] $EXTRA\";/" src/clientversion.cpp
+sed -i "s/return ss.str();/return ss.str() + \"[B.A.N.]$EXTRA\";/" src/clientversion.cpp
 
 ./autogen.sh
 ./configure --without-gui --without-upnp --disable-tests
