@@ -25,8 +25,9 @@ mkdir -p ~/src && cd ~/src
 git clone https://github.com/bitcoinxt/bitcoinxt.git
 cd bitcoinxt
 
-# Add a market to track how much BitcoinAutoNode is used:
-sed -i "s/CLIENT_NAME(\"Bitcoin XT\")/CLIENT_NAME(\"Bitcoin XT (B.A.N.)\")/" src/clientversion.cpp
+# Add a market to track how much BitcoinAutoNode is used
+# Insert [B.A.N.] at the end of the client name, probably not compatible with BIP 14 but eh
+sed -i 's/\(CLIENT_NAME(".*\)\(")\)/\1 \[B.A.N.\]\2/' src/clientversion.cpp
 
 ./autogen.sh
 ./configure --without-gui --without-upnp --disable-tests
