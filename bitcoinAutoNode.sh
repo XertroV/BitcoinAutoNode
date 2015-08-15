@@ -45,8 +45,8 @@ randPass=`< /dev/urandom tr -dc A-Za-z0-9 | head -c30`
 echo "rpcuser=$randUser" >> $config
 echo "rpcpassword=$randPass" >> $config
 
-# set prune amount to size of `/` 75% (and then by /1000 to turn KB to MB) => /1333
-echo "prune="$(expr $(df | grep '/$' | tr -s ' ' | cut -d ' ' -f 2) / 1333) >> $config # safe enough for now
+# set prune amount to size of `/` 60% (and then by /1000 to turn KB to MB) => /1666
+echo "prune="$(expr $(df | grep '/$' | tr -s ' ' | cut -d ' ' -f 2) / 1666) >> $config # safe enough for now
 
 echo "########### Setting up autostart (cron)"
 crontab -l > tempcron
