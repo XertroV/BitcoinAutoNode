@@ -12,7 +12,7 @@ apt-get -y install libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev 
 apt-get -y install libcurl4-openssl-dev
 
 echo "########### Creating Swap"
-dd if=/dev/zero of=/swapfile bs=1M count=1024 ; mkswap /swapfile ; swapon /swapfile
+dd if=/dev/zero of=/swapfile bs=1M count=2048 ; mkswap /swapfile ; swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
 
 echo "########### Adding ppa:bitcoin/bitcoin and installing db4.8"
