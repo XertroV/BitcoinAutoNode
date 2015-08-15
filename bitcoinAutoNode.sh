@@ -3,22 +3,18 @@ echo "########### The server will reboot when the script is complete"
 echo "########### Changing to home dir"
 cd ~
 echo "########### Updating Ubuntu"
+add-apt-repository -y ppa:bitcoin/bitcoin
 apt-get -y update
 # apt-get -y upgrade -- don't upgrade, there is an issue with grub that prompts the user, and to keep this non-interactive it's best just to ignore it
 # apt-get -y dist-upgrade
 apt-get -y install software-properties-common python-software-properties htop
 apt-get -y install git build-essential autoconf libboost-all-dev libssl-dev pkg-config
 apt-get -y install libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev libtool
-apt-get -y install libcurl4-openssl-dev
+apt-get -y install libcurl4-openssl-dev db4.8
 
 echo "########### Creating Swap"
 dd if=/dev/zero of=/swapfile bs=1M count=2048 ; mkswap /swapfile ; swapon /swapfile
 echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
-
-echo "########### Adding ppa:bitcoin/bitcoin and installing db4.8"
-add-apt-repository -y ppa:bitcoin/bitcoin
-apt-get update -y
-apt-get -y install db4.8
 
 echo "########### Cloning XT and Compiling"
 mkdir -p ~/src && cd ~/src
