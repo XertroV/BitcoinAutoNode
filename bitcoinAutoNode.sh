@@ -4,8 +4,8 @@ echo "########### Changing to home dir"
 cd ~
 echo "########### Updating Ubuntu"
 apt-get -y update
-apt-get -y upgrade
-apt-get -y dist-upgrade
+# apt-get -y upgrade -- don't upgrade, there is an issue with grub that prompts the user, and to keep this non-interactive it's best just to ignore it
+# apt-get -y dist-upgrade
 apt-get -y install software-properties-common python-software-properties htop
 apt-get -y install git build-essential autoconf libboost-all-dev libssl-dev pkg-config
 apt-get -y install libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev libtool
