@@ -27,7 +27,12 @@ cd bitcoinxt
 
 # Add a market to track how much BitcoinAutoNode is used
 # Insert [B.A.N.] at the end of the client name, probably not compatible with BIP 14 but eh
-sed -i 's/\(CLIENT_NAME(".*\)\(")\)/\1 \[B.A.N.\]\2/' src/clientversion.cpp
+#sed -i 's/\(CLIENT_NAME(".*\)\(")\)/\1 \[B.A.N.\]\2/' src/clientversion.cpp
+if [ -z $FIRSTNAME ]; then
+  EXTRA=""
+else
+  EXTRA=" $FIRSTNAME's node"
+sed -i "s/return ss.str();/return ss.str() + \"[B.A.N.] $EXTRA\";/" src/clientversion.cpp
 
 ./autogen.sh
 ./configure --without-gui --without-upnp --disable-tests
