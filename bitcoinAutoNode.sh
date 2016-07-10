@@ -64,7 +64,7 @@ rm tempcron
 # only way I've been able to get it reliably to start on boot
 # (didn't want to use a service with systemd so it could be used with older ubuntu versions, but systemd is preferred)
 sed -i '2a\
-sudo -u bitcoin /usr/local/bin/bitcoind' /etc/rc.local
+sudo -u bitcoin /usr/local/bin/bitcoind -datadir=/home/bitcoin/.bitcoin' /etc/rc.local
 
 echo "############ Add an alias for easy use"
 echo "alias btc=\"sudo -u bitcoin bitcoin-cli -datadir=/home/bitcoin/.bitcoin\"" >> ~/.bashrc  # example use: btc getinfo
