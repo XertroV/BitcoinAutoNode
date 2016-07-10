@@ -26,8 +26,6 @@ It should drop the connection once it's started. You can view the setup with `sc
 Notes
 -----
 
-Currently Bitcoin XT is cloned from git and compiled. If you would like to set use Bitcoin Core instead you can find the last version to support installing from PPA [here](https://raw.githubusercontent.com/XertroV/BitcoinAutoNode/792d059a65dd240ce5c952653207272c7f1246c2/bitcoinAutoNode.sh).
-
 Previously, the script would prompt you to change your password and would install the ufw (and allow ports 8333 and 22). However, I've removed that. All that happens now is installing `bitcoind` and dependencies.
 
 Pruning is used and by default set to a maximum of ~60% of the `/` volume, ensuring it can be run on a small VPS. For this reason a 2 GB swap file is also instantiated.
