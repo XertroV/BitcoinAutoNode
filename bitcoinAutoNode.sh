@@ -10,7 +10,7 @@ apt-get -y update
 apt-get -y install software-properties-common python-software-properties htop
 apt-get -y install git build-essential autoconf libboost-all-dev libssl-dev pkg-config
 apt-get -y install libprotobuf-dev protobuf-compiler libqt4-dev libqrencode-dev libtool
-apt-get -y install libcurl4-openssl-dev db4.8
+apt-get -y install libcurl4-openssl-dev db4.8 libevent-dev
 
 echo "########### Creating Swap"
 dd if=/dev/zero of=/swapfile bs=1M count=2048 ; mkswap /swapfile ; swapon /swapfile
